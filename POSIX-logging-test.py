@@ -31,7 +31,8 @@ def setup_log_file_handler(config, logfile, fmt):
     return handler, log_file_path
 
 def find_facility(facility):
-    """ "Derived" from:
+    '''
+    "Derived" from:
     https://github.com/openstack/oslo.log/blob/7d1ef90316d4907ccbb3654f7f3628fba4526bce/oslo_log/log.py
     Credit to the OpenStack Foundation & the United States Government as represented by the
     Administrator of the National Aeronautics and Space Administration.
@@ -41,7 +42,8 @@ def find_facility(facility):
     License at: http://www.apache.org/licenses/LICENSE-2.0
 
     # NOTE(jd): Check the validity of facilities at run time as they differ
-    # depending on the OS and Python version being used."""
+    # depending on the OS and Python version being used.
+    '''
     valid_facilities = [f for f in
                         ["LOG_KERN",   "LOG_USER",     "LOG_MAIL",
                          "LOG_DAEMON", "LOG_AUTH",     "LOG_SYSLOG",
@@ -93,12 +95,27 @@ def setup_syslog_handler(facility, fmt):
         return setup_log_file_handler(
             config, fallback_logfile, fallback_logfile_fmt)
 
-
-handler, log_file_path = setup_syslog_handler("daemon", logfile_fmt)
-logger.addHandler(handler)
 #logger.setLevel(logging.ERROR)
-logger.debug("debug test")
-logger.info("info test")
-logger.warning("warning test")
-logger.error("error test")
-logger.critical("critical test")
+
+target_facilities = ["kern",   "user",     "mail",
+                     "daemon", "auth",     "syslog",
+                     "lpr",    "news",     "uucp",
+                     "cron",   "authpriv", "ftp",
+                     "local0", "local1",   "local2",
+                     "local3", "local4",   "local5",
+                     "local6", "local7"]
+
+for target_facility in target_facilities:
+    print target_facility
+    handler, log_file_path = setup_syslog_handler(target_facility, logfile_fmt)
+    logger.addHandler(handler)
+    logger.debug(target_facility + " debug test")
+    time.sleep(1)
+    logger.info(target_facility + " info test")
+    time.sleep(1)
+    logger.warning(target_facility + " warning test")
+    time.sleep(1)
+    logger.error(target_facility + " error test")
+    time.sleep(1)
+    logger.critical(target_facility + " critical test")
+    time.sleep(3)

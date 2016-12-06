@@ -8,6 +8,12 @@ It is under active development.
 It is almost definately not what you want.
 Please go check out the `official certbot repo <https://github.com/certbot/certbot>`_.
 
+For the files I've touched: |sc-perth-badge|
+
+.. |sc-perth-badge| image:: https://api.codacy.com/project/badge/Grade/b6b41517168c469d900b516c78136be4
+                    :target: https://www.codacy.com/app/perth/certbot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sc-perth/certbot&amp;utm_campaign=Badge_Grade
+                    :alt: Well, there was SUPPOSED to be an image here...
+
 !!!DRAGONS!!!
 -------------
 
