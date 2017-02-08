@@ -597,7 +597,7 @@ def setup_log_file_handler(config, logfile, fmt):
     """Setup file debug logging."""
     log_file_path = os.path.join(config.logs_dir, logfile)
     try:
-        if args.disable_log_rotation:
+        if config.disable_log_rotation:
             handler = logging.handlers.RotatingFileHandler(
                 log_file_path, maxBytes=2 ** 20, backupCount=0)
         else:

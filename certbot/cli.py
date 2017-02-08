@@ -670,7 +670,7 @@ def prepare_and_parse_args(plugins, args, detect_defaults=False):  # pylint: dis
     helpful.add(
         [None, "automation", "paths"],
         "--disable-log-rotation", dest="disable_log_rotation",
-        action="store_true", default=None,
+        action="store_true", default=False,
         help="Disable per-run rotation of the log. This results in a single "
         "log file.")
     helpful.add(
